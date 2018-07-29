@@ -1,7 +1,7 @@
 {
   "name": "api.eslite-com",
   "version": "1.0.0",
-  "description": "Unofficial eslite.com API",
+  "description": "Unofficial eslite-com API",
   "main": "index.js",
   "scripts": {
     "start": "node ./dist/demo.js",
