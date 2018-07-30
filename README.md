@@ -76,7 +76,7 @@
   result = [
     {
       title: string,
-      author: string or null,
+      author: string[] or null,
       publisher: string or null,
       publicationDate: string or null,
       imageUrl: string or null,
