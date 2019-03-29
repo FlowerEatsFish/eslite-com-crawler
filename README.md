@@ -12,8 +12,8 @@
 
   ```shell
   # To download the files and install packages.
-  $ git clone https://github.com/FlowerEatFish/api.eslite-com.git
-  $ cd api.eslite-com
+  $ git clone https://github.com/FlowerEatFish/eslite-com-api.git
+  $ cd eslite-com-api
   $ npm install
 
   # To run a demo.
@@ -59,9 +59,9 @@
 ### Input parameters you want to search for information
 
   ```js
-  import EsliteComCollection from 'eslite-com-collection.development'; // Here uses development mode as an example
+  import EsliteComCollectionApi from 'eslite-com-collection-api.development'; // Here uses development mode as an example
 
-  const result = EsliteComCollection(
+  const result = EsliteComCollectionApi(
     keyword, // string. Necessary.
              //If you configs it as null, it will get an error.
     page, // number. Positive integer. Default: 1.

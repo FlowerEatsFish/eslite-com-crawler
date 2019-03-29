@@ -1,5 +1,5 @@
 {
-  "name": "api.eslite-com",
+  "name": "eslite-com-api",
   "version": "1.0.0",
   "description": "Unofficial eslite-com API",
   "main": "index.js",
@@ -11,19 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FlowerEatFish/api.eslite-com.git"
+    "url": "git+https://github.com/FlowerEatFish/eslite-com-api.git"
   },
   "keywords": [
     "api",
     "typescript",
     "web-crawler"
   ],
-  "author": "FlowerEatFish",
+  "author": "Eating-Fish Flower",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FlowerEatFish/api.eslite-com/issues"
+    "url": "https://github.com/FlowerEatFish/eslite-com-api/issues"
   },
-  "homepage": "https://github.com/FlowerEatFish/api.eslite-com#readme",
+  "homepage": "https://github.com/FlowerEatFish/eslite-com-api#readme",
   "dependencies": {
     "axios": "^0.18.0"
   },

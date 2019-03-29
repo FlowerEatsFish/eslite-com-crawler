@@ -5,13 +5,13 @@ const packageInfo = require('./package.json');
 module.exports = {
   mode: 'development',
   entry: {
-    'eslite-com-collection': './src/index.ts',
+    'eslite-com-collection-api': './src/index.ts',
   },
   output: {
     path: path.join(__dirname, '/dist'),
     publicPath: 'dist/',
     filename: './[name].development.js',
-    library: 'eslite-com-collection',
+    library: 'eslite-com-collection-api',
     libraryTarget: 'umd'
   },
   module: {
