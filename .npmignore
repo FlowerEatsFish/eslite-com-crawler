@@ -1,0 +1,13 @@
+# directories
+dist/
+
+# hidden configs
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+
+# configs
+package-lock.json
+tsconfig.json
+webpack.config.js

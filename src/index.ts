@@ -5,13 +5,13 @@
 import { collectionFetch, IFetchResult } from './eslite-com-fetch';
 import { IItemType, itemListParser } from './item-list-parser';
 
-const bookCollection: Function = async (keyword: string, page: number = 1): Promise<object> => {
+const esliteComCollection: Function = async (keyword: string, page: number = 1): Promise<IItemType[] | null> => {
   const htmlCodeAfterFetch: IFetchResult = await collectionFetch(null, keyword, page);
   // To check where the HTML code is from and do next step
   console.log(`>>> You search data using ${htmlCodeAfterFetch.url}`);
 
   // To check whether data is got
-  if (htmlCodeAfterFetch.data.includes('<div class="box_noResult">') !== true) {
+  if (htmlCodeAfterFetch.data && !htmlCodeAfterFetch.data.includes('<div class="box_noResult">')) {
     const itemList: IItemType[] = await itemListParser(htmlCodeAfterFetch.data);
     if (itemList.length > 0) {
       // To do here if the HTML code contains one or more result(s)
@@ -31,4 +31,4 @@ const bookCollection: Function = async (keyword: string, page: number = 1): Prom
   return null;
 };
 
-export default bookCollection;
+export default esliteComCollection;

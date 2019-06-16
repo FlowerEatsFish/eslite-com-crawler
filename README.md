@@ -17,7 +17,6 @@
   $ npm install
 
   # To run a demo.
-  $ npm run build
   $ npm start
   ```
 
@@ -59,7 +58,7 @@
 ### Input parameters you want to search for information
 
   ```js
-  import EsliteComCollectionApi from 'eslite-com-collection-api.development'; // Here uses development mode as an example
+  import EsliteComCollectionApi from 'eslite-com-collection-api'; // Here uses development mode as an example
 
   const result = EsliteComCollectionApi(
     keyword, // string. Necessary.
