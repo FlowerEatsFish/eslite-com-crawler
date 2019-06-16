@@ -76,7 +76,9 @@ $ npm start
 ```shell
 >>> You search data using keyword "春夏秋冬，日日食光。生活美學家的鑄鐵鍋料理手帖".
 
-[ { title: '春夏秋冬, 日日食光: 生活美學家的鑄鐵鍋料理手帖',
+[
+  {
+    title: '春夏秋冬, 日日食光: 生活美學家的鑄鐵鍋料理手帖',
     url: 'http://www.eslite.com/product.aspx?pgid=1001130572489683&kw=%e6%98%a5%e5%a4%8f%e7%a7%8b%e5%86%ac+%e6%97%a5%e6%97%a5%e9%a3%9f%e5%85%89+%e7%94%9f%e6%b4%bb%e7%be%8e%e5%ad%b8%e5%ae%b6%e7%9a%84%e9%91%84%e9%90%b5%e9%8d%8b%e6%96%99%e7%90%86%e6%89%8b%e5%b8%96&pi=1',
     author: [ '渡邊有子著' ],
     publisher: '臉譜出版社',
@@ -112,7 +114,7 @@ import EsliteComCollectionApi from 'eslite-com-collection-api'; // Here uses dev
 
 const result = EsliteComCollectionApi(
   keyword, // string. Necessary.
-            // If you configs it as null, it will get an error.
+           // If you set it as null, it will get an error.
   page, // number. Positive integer. Default: 1.
         // Every page only shows maximum 10 results.
 )
