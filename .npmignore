@@ -6,8 +6,10 @@ dist/
 .eslintignore
 .eslintrc
 .gitignore
+.travis.yml
 
 # configs
+appveyor.yml
 package-lock.json
 tsconfig.json
 webpack.config.js
