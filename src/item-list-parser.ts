@@ -99,8 +99,7 @@ const getItemPublicationDate: Function = (htmlCode: string): string => {
 
 const getItemUrl: Function = (htmlCode: string): string => {
   try {
-    return htmlCode.match(/http\:\/\/www\.eslite\.com\/product\.aspx[^"]*/gi)[0];
-
+    return htmlCode.match(/http:\/\/www\.eslite\.com\/product\.aspx[^"]*/gi)[0];
   } catch (error) {
     return null;
   }
@@ -152,8 +151,7 @@ export const itemListParser: Function = async (htmlCode: string): Promise<IItemT
   const itemListWithCode: string[] = await splitHtmlCode(targetHtmlCode);
   if (itemListWithCode.length > 0) {
     // To build up data we want
-    // tslint:disable-next-line:no-unnecessary-local-variable
-    const itemList: IItemType[] = await Promise.all(itemListWithCode.map((value: string) => getItem(value)));
+    const itemList: IItemType[] = await Promise.all(itemListWithCode.map((value: string): IItemType => getItem(value)));
 
     return itemList;
   }

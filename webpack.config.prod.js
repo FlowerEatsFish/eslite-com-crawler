@@ -6,7 +6,7 @@ const packageInfo = require('./package.json');
 module.exports = {
   mode: 'production',
   entry: {
-    'eslite-com-collection-api': './src/index.ts',
+    'eslite-com-collection-api': './src/index.ts'
   },
   output: {
     path: path.join(__dirname, '/dist'),
@@ -29,15 +29,15 @@ module.exports = {
   },
   plugins: [
     new BannerPlugin({
-      banner: `Repository: ${packageInfo.name} | Version: ${packageInfo.version} | Author: ${packageInfo.author} | License: ${packageInfo.license}`,
-    }),
+      banner: `Repository: ${packageInfo.name} | Version: ${packageInfo.version} | Author: ${packageInfo.author} | License: ${packageInfo.license}`
+    })
   ],
   optimization: {
     minimizer: [
       new UglifyJSPlugin({
         uglifyOptions: {
           compress: {
-            drop_console: true,
+            drop_console: true
           }
         }
       })

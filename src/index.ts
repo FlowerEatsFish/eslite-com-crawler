@@ -31,5 +31,4 @@ const bookCollection: Function = async (keyword: string, page: number = 1): Prom
   return null;
 };
 
-// tslint:disable-next-line:no-default-export
 export default bookCollection;
