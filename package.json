@@ -11,7 +11,8 @@
     "demo:js": "ts-node ./lib/demo.js",
     "demo:ts": "ts-node ./src/demo.ts",
     "lint": "eslint . -f stylish --ext .js --ext .ts",
-    "lint:fix": "eslint . -f stylish --ext .js --ext .ts --fix"
+    "lint:fix": "eslint . -f stylish --ext .js --ext .ts --fix",
+    "test": "jest --coverage --silent"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,8 @@
     "axios": "^0.18.0"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.13.4",
     "@typescript-eslint/eslint-plugin": "^1.6.0",
     "@typescript-eslint/parser": "^1.6.0",
     "cross-env": "^5.2.0",
@@ -40,6 +43,8 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.7.1",
+    "ts-jest": "^24.0.2",
     "ts-loader": "^4.4.2",
     "ts-node": "^8.3.0",
     "typescript": "^3.4.1",
