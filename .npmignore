@@ -1,5 +1,5 @@
 # directories
-dist/
+coverage/
 test/
 
 # hidden configs
@@ -11,6 +11,7 @@ test/
 
 # configs
 appveyor.yml
+jest.config.js
 package-lock.json
 tsconfig.json
 webpack.config.js
