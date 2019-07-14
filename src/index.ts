@@ -2,14 +2,15 @@
  * Main control for this library.
  */
 
+import { EsliteComCollectionFunction, DetailType } from '../index';
 import { collectionFetch, IFetchResult } from './eslite-com-fetch';
-import { IItemType, itemListParser } from './item-list-parser';
+import { itemListParser } from './item-list-parser';
 
-const esliteComCollection: Function = async (keyword: string, page: number = 1): Promise<IItemType[] | null> => {
+const esliteComCollection: EsliteComCollectionFunction = async (keyword: string, page: number = 1): Promise<DetailType[] | null> => {
   const htmlCodeAfterFetch: IFetchResult = await collectionFetch(null, keyword, page);
   // To check whether data is got
   if (htmlCodeAfterFetch.data && !htmlCodeAfterFetch.data.includes('<div class="box_noResult">')) {
-    const itemList: IItemType[] = await itemListParser(htmlCodeAfterFetch.data);
+    const itemList: DetailType[] = await itemListParser(htmlCodeAfterFetch.data);
     if (itemList.length > 0) {
       // To do here if the HTML code contains one or more result(s)
       return itemList;

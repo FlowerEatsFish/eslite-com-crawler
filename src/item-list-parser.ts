@@ -2,21 +2,7 @@
  * To parse the results when the fetcher got one or more data.
  */
 
-export interface IPriceType {
-  discount: number | null;
-  currentPrice: number | null;
-}
-
-export interface IItemType {
-  title: string;
-  url: string;
-  author: string[] | null;
-  publisher: string | null;
-  publicationDate: string | null;
-  imageUrl: string | null;
-  price: IPriceType;
-  introduction: string | null;
-}
+import { DetailType, PriceField } from '../index';
 
 const removeAllHtmlTag: Function = (text: string): string => {
   let result: string = text.replace(/<\/?\w+[^>]*>/gi, '');
@@ -38,7 +24,7 @@ const setItemWithTag: Function = (text: string[], tag: string): number | null =>
   }
 };
 
-const getItemPrice: Function = async (htmlCode: string): Promise<IPriceType> => {
+const getItemPrice: Function = async (htmlCode: string): Promise<PriceField> => {
   try {
     const result: string[] | null = htmlCode.match(/<td valign="top" class="summary">[\w\W]*?<\/td>/gi);
 
@@ -149,8 +135,8 @@ const getItemIntroduction: Function = (htmlCode: string): string | null => {
   }
 };
 
-const getItem: Function = async (htmlCode: string): Promise<IItemType> => {
-  const price: IPriceType = await getItemPrice(htmlCode);
+const getItem: Function = async (htmlCode: string): Promise<DetailType> => {
+  const price: PriceField = await getItemPrice(htmlCode);
 
   return {
     title: getItemTitle(htmlCode),
@@ -172,14 +158,14 @@ const getSpecificHtmlCode: Function = (htmlCode: string): string | null => {
   return result && result[0];
 };
 
-export const itemListParser: Function = async (htmlCode: string): Promise<IItemType[]> => {
+export const itemListParser: Function = async (htmlCode: string): Promise<DetailType[]> => {
   // To get specific html code containing data
   const targetHtmlCode: string = await getSpecificHtmlCode(htmlCode);
   // To split code from string into array by special tag
   const itemListWithCode: string[] = await splitHtmlCode(targetHtmlCode);
   if (itemListWithCode.length > 0) {
     // To build up data we want
-    const itemList: IItemType[] = await Promise.all(itemListWithCode.map((value: string): IItemType => getItem(value)));
+    const itemList: DetailType[] = await Promise.all(itemListWithCode.map((value: string): DetailType => getItem(value)));
 
     return itemList;
   }
