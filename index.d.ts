@@ -15,7 +15,7 @@ export interface DetailType {
 }
 
 export type EsliteComCollectionFunction =
-  (keyword: string, page?: number) => DetailType[] | null;
+  (keyword: string, page?: number) => Promise<DetailType[] | null>;
 
 declare const esliteComCollectionApi: EsliteComCollectionFunction;
 
