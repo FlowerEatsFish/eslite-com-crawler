@@ -4,8 +4,8 @@ export interface PriceField {
 }
 
 export interface DetailType {
-  title: string;
-  url: string;
+  title: string | null;
+  url: string | null;
   author: string[] | null;
   publisher: string | null;
   publicationDate: string | null;

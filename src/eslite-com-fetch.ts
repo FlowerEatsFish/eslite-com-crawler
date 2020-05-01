@@ -1,79 +1,51 @@
 /**
- * To fetch data via eslite.com.
+ * To fetch data from eslite.com.
  */
 
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios from "axios";
 
 export interface FetchResult {
   data: string | null;
   url: string;
 }
 
-const removeLeftoverCode: Function = (htmlCode: string): string => {
-  let result: string = htmlCode.replace("\\t", "");
+const removeLeftoverCode = (htmlCode: string): string => {
+  let result = htmlCode.replace("\\t", "");
   result = result.replace("\\n", "");
   result = result.replace(/\s+/gi, " ");
 
   return result;
 };
 
-const setKeywordToInsertUrl: Function = (keyword: string): string => {
+const setKeywordToInsertUrl = (keyword: string): string => {
   // To remove special characters
-  let temp: string = keyword.replace(/[~!@#$%^&*()_+\-=}{[\]|"':;?/.,<>}\\]/gi, " ");
-  // To remove two or more consequent spaces
+  let temp = keyword.replace(/[~!@#$%^&*()_+\-=}{[\]|"':;?/.,<>}\\]/gi, " ");
+  // To remove two or more consequent white spaces
   temp = temp.replace(/\s+/, " ");
-  // To remove last space
-  temp = temp.replace(/\s+$/, "");
+  // To trim white spaces
+  temp = temp.trim();
 
   return encodeURI(temp);
 };
 
-const setPageToInsertUrl: Function = (page: number): number => page;
+const setUrl = (keyword: string, page: number): string => {
+  const tempKeyword = setKeywordToInsertUrl(keyword);
 
-const setUrl: Function = (keyword: string, page: number): string => {
-  const tempKeyword: string = setKeywordToInsertUrl(keyword);
-  const tempPage: number = setPageToInsertUrl(page);
-
-  return `http://www.eslite.com/Search_BW.aspx?query=${tempKeyword}&page=${tempPage}`;
+  return `http://www.eslite.com/Search_BW.aspx?query=${tempKeyword}&page=${page}`;
 };
 
-const fetchFullHtmlCode: Function = async (url: string): Promise<string> => {
-  return new Promise(
-    (resolve: (data: string) => void, reject: (error: AxiosError) => void): void => {
-      axios
-        .get(url)
-        .then((response: AxiosResponse): void => resolve(removeLeftoverCode(response.data)))
-        .catch((error: AxiosError): void => reject(error));
-    },
-  );
-};
-
-const setUrlFollowParameter: Function = async (
-  url: string,
-  keyword: string,
-  page: number,
-): Promise<string> => {
-  if (url) {
-    return url;
-  }
-  const combineUrl: string = await setUrl(keyword, page);
-
-  return combineUrl;
-};
-
-export const collectionFetch: Function = async (
-  url: string,
-  keyword: string | null = null,
-  page: number | null = null,
-): Promise<FetchResult> => {
-  const fullUrl: string = await setUrlFollowParameter(url, keyword, page);
-
-  let data: string | null;
+const fetchFullHtmlCode = async (url: string): Promise<string | null> => {
   try {
-    data = await fetchFullHtmlCode(fullUrl);
-  } catch (error) {
-    data = null;
-  }
+    const response = await axios.get(url);
 
-  return { data, url: fullUrl };
+    return removeLeftoverCode(response.data);
+  } catch (error) {
+    return null;
+  }
+};
+
+export const collectionFetch = async (keyword: string, page: number): Promise<FetchResult> => {
+  const fullUrl = setUrl(keyword, page);
+
+  return { data: await fetchFullHtmlCode(fullUrl), url: fullUrl };
 };

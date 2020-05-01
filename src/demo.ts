@@ -10,11 +10,12 @@ const keywordList: string[] = [
   "blablablablablablablablablablablabla", // It will be no result.
 ];
 
-const demo: Function = async (): Promise<void> => {
+const demo = async (keywordList: string[]): Promise<void> => {
   for (const keyword of keywordList) {
-    await console.log(`>>> You search data using keyword "${keyword}".`);
+    console.log(`>>> You search data using keyword "${keyword}".`);
+
     const result = await bookCollection(keyword);
-    await console.log(result);
+    console.log(result);
   }
 };
 

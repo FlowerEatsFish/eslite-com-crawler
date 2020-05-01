@@ -134,7 +134,7 @@ const result = EsliteComCollectionApi(
 // If you get one or more result(s), it will return an "array".
 result = [
   {
-    title: string,
+    title: string or null,
     author: string[] or null,
     publisher: string or null,
     publicationDate: string or null,
@@ -142,9 +142,9 @@ result = [
     introduction: string or null,
     price: {
       discount: number or null,
-      currentPrice: number or null
+      currentPrice: number or null,
     },
-    url: string
+    url: string or null,
   },
   { ... }, { ... }, ...
 ];

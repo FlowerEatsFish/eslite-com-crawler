@@ -10,10 +10,10 @@ const esliteComCollection: EsliteComCollectionFunction = async (
   keyword: string,
   page = 1,
 ): Promise<DetailType[] | null> => {
-  const htmlCodeAfterFetch: FetchResult = await collectionFetch(null, keyword, page);
+  const htmlCodeAfterFetch: FetchResult = await collectionFetch(keyword, page);
   // To check whether data is got
   if (htmlCodeAfterFetch.data && !htmlCodeAfterFetch.data.includes('<div class="box_noResult">')) {
-    const itemList: DetailType[] = await itemListParser(htmlCodeAfterFetch.data);
+    const itemList = await itemListParser(htmlCodeAfterFetch.data);
     if (itemList.length > 0) {
       // To do here if the HTML code contains one or more result(s)
       return itemList;
