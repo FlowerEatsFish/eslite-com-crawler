@@ -7,11 +7,12 @@ test/
 .eslintignore
 .eslintrc
 .gitignore
+.prettierrc
 .travis.yml
 
 # configs
 appveyor.yml
 jest.config.js
-package-lock.json
 tsconfig.json
 webpack.config.js
+yarn-error.log
