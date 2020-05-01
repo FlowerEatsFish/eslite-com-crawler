@@ -15,7 +15,7 @@ const removeAllHtmlTag = (text: string): string => {
 };
 
 const setItemWithTag = (text: string[], tag: string): number | null => {
-  const result = text.filter((value) => value.includes(`${tag}`))[0];
+  const result = text.filter((value): boolean => value.includes(`${tag}`))[0];
 
   return result ? Number(result.replace(/\D/gi, "")) : null;
 };
@@ -25,8 +25,10 @@ const getItemPrice = (htmlCode: string): PriceField => {
 
   if (result) {
     const resultWithArray = result[0].split("span ");
-    let resultWithPrice = resultWithArray.filter((value) => value.includes('class="price_sale"'));
-    resultWithPrice = resultWithPrice.map((value) => removeAllHtmlTag(value));
+    let resultWithPrice = resultWithArray.filter((value): boolean =>
+      value.includes('class="price_sale"'),
+    );
+    resultWithPrice = resultWithPrice.map((value): string => removeAllHtmlTag(value));
 
     return {
       discount: setItemWithTag(resultWithPrice, "折"),
