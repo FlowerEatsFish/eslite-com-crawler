@@ -29,8 +29,16 @@
 
 ## Installation
 
+- NPM
+
 ```shell
 npm install @flowereatfish/eslite-com-api --save
+```
+
+- Yarn
+
+```shell
+yarn add @flowereatfish/eslite-com-api
 ```
 
 ## Usage
@@ -65,10 +73,10 @@ esliteComCollectionApi('橡皮擦計畫')
 # To download the files and install packages.
 $ git clone https://github.com/FlowerEatFish/eslite-com-api.git
 $ cd eslite-com-api
-$ npm install
+$ yarn install # npm install
 
 # To run a demo.
-$ npm start
+$ yarn start # npm start
 ```
 
 ### Results
