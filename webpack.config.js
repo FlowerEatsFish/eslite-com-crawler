@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 const { BannerPlugin } = require("webpack");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const path = require("path");
@@ -44,7 +42,6 @@ const prodConfig = {
       new UglifyJSPlugin({
         uglifyOptions: {
           compress: {
-            // eslint-disable-next-line @typescript-eslint/camelcase
             drop_console: true,
           },
         },
@@ -60,9 +57,7 @@ const runBeforeWebpack = () => {
     case PRODUCTION:
       return Object.assign({}, commonConfig, prodConfig);
     default:
-      throw new Error(
-        `process.env.NODE_ENV does NOT match with "${DEVELOPMENT}" or "${PRODUCTION}".`,
-      );
+      throw new Error(`process.env.NODE_ENV does NOT match with "${DEVELOPMENT}" or "${PRODUCTION}".`);
   }
 };
 
