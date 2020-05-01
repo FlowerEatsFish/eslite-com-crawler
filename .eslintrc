@@ -1,27 +1,15 @@
 {
-  "extends": "standard-with-typescript",
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "prettier"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"
-  },
-  "rules": {
-    "semi": ["error", "always"]
-  },
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx"],
-      "rules": {
-        "@typescript-eslint/member-delimiter-style": [
-          "error",
-          {
-            "multiline": { "delimiter": "semi", "requireLast": true },
-            "singleline": { "delimiter": "semi", "requireLast": false }
-          }
-        ]
-      }
-    }
-  ]
+  }
 }

@@ -2,28 +2,28 @@
  * To fetch data via eslite.com.
  */
 
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosResponse } from "axios";
 
-export interface IFetchResult {
+export interface FetchResult {
   data: string | null;
   url: string;
 }
 
 const removeLeftoverCode: Function = (htmlCode: string): string => {
-  let result: string = htmlCode.replace('\\t', '');
-  result = result.replace('\\n', '');
-  result = result.replace(/\s+/gi, ' ');
+  let result: string = htmlCode.replace("\\t", "");
+  result = result.replace("\\n", "");
+  result = result.replace(/\s+/gi, " ");
 
   return result;
 };
 
 const setKeywordToInsertUrl: Function = (keyword: string): string => {
   // To remove special characters
-  let temp: string = keyword.replace(/[~!@#$%^&*()_+\-=}{[\]|"':;?/.,<>}\\]/gi, ' ');
+  let temp: string = keyword.replace(/[~!@#$%^&*()_+\-=}{[\]|"':;?/.,<>}\\]/gi, " ");
   // To remove two or more consequent spaces
-  temp = temp.replace(/\s+/, ' ');
+  temp = temp.replace(/\s+/, " ");
   // To remove last space
-  temp = temp.replace(/\s+$/, '');
+  temp = temp.replace(/\s+$/, "");
 
   return encodeURI(temp);
 };
@@ -38,14 +38,21 @@ const setUrl: Function = (keyword: string, page: number): string => {
 };
 
 const fetchFullHtmlCode: Function = async (url: string): Promise<string> => {
-  return new Promise((resolve: (data: string) => void, reject: (error: AxiosError) => void): void => {
-    axios.get(url)
-      .then((response: AxiosResponse): void => resolve(removeLeftoverCode(response.data)))
-      .catch((error: AxiosError): void => reject(error));
-  });
+  return new Promise(
+    (resolve: (data: string) => void, reject: (error: AxiosError) => void): void => {
+      axios
+        .get(url)
+        .then((response: AxiosResponse): void => resolve(removeLeftoverCode(response.data)))
+        .catch((error: AxiosError): void => reject(error));
+    },
+  );
 };
 
-const setUrlFollowParameter: Function = async (url: string, keyword: string, page: number): Promise<string> => {
+const setUrlFollowParameter: Function = async (
+  url: string,
+  keyword: string,
+  page: number,
+): Promise<string> => {
   if (url) {
     return url;
   }
@@ -54,7 +61,11 @@ const setUrlFollowParameter: Function = async (url: string, keyword: string, pag
   return combineUrl;
 };
 
-export const collectionFetch: Function = async (url: string, keyword: string | null = null, page: number | null = null): Promise<IFetchResult> => {
+export const collectionFetch: Function = async (
+  url: string,
+  keyword: string | null = null,
+  page: number | null = null,
+): Promise<FetchResult> => {
   const fullUrl: string = await setUrlFollowParameter(url, keyword, page);
 
   let data: string | null;

@@ -1,39 +1,41 @@
-const { BannerPlugin } = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const path = require('path');
-const packageInfo = require('./package.json');
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+const { BannerPlugin } = require("webpack");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const path = require("path");
+const packageInfo = require("./package.json");
 
-const DEVELOPMENT = 'development';
-const PRODUCTION = 'production';
+const DEVELOPMENT = "development";
+const PRODUCTION = "production";
 
 const commonConfig = {
   mode: process.env.NODE_ENV,
   entry: {
-    'eslite-com-collection-api': './src/index.ts'
+    "eslite-com-collection-api": "./src/index.ts",
   },
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: process.env.NODE_ENV === PRODUCTION ? '[name].min.js' : '[name].js',
-    library: 'eslite-com-collection-api',
-    libraryTarget: 'umd'
+    path: path.join(__dirname, "dist"),
+    filename: process.env.NODE_ENV === PRODUCTION ? "[name].min.js" : "[name].js",
+    library: "eslite-com-collection-api",
+    libraryTarget: "umd",
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
-      }
-    ]
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
     new BannerPlugin({
-      banner: `Repository: ${packageInfo.name} | Version: ${packageInfo.version} | Author: ${packageInfo.author} | License: ${packageInfo.license}`
-    })
-  ]
+      banner: `Repository: ${packageInfo.name} | Version: ${packageInfo.version} | Author: ${packageInfo.author} | License: ${packageInfo.license}`,
+    }),
+  ],
 };
 
 const prodConfig = {
@@ -42,12 +44,13 @@ const prodConfig = {
       new UglifyJSPlugin({
         uglifyOptions: {
           compress: {
-            drop_console: true
-          }
-        }
-      })
-    ]
-  }
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            drop_console: true,
+          },
+        },
+      }),
+    ],
+  },
 };
 
 const runBeforeWebpack = () => {
@@ -57,7 +60,9 @@ const runBeforeWebpack = () => {
     case PRODUCTION:
       return Object.assign({}, commonConfig, prodConfig);
     default:
-      throw new Error(`process.env.NODE_ENV does NOT match with "${DEVELOPMENT}" or "${PRODUCTION}".`);
+      throw new Error(
+        `process.env.NODE_ENV does NOT match with "${DEVELOPMENT}" or "${PRODUCTION}".`,
+      );
   }
 };
 
