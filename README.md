@@ -12,7 +12,7 @@
 
 - [Unofficial Eslite-com Collection API](#unofficial-eslite-com-collection-api)
   - [Requirements](#requirements)
-  - [Installation](#installation)
+  - [Installations](#installations)
   - [Usage](#usage)
     - [Node.js version 8 or higher (with full Async/Await support)](#nodejs-version-8-or-higher-with-full-asyncawait-support)
     - [Others](#others)
@@ -27,7 +27,7 @@
 
 - This construct uses [Axios.js](https://github.com/axios/axios), so you need to care about Cross-Origin Requests (CORS).
 
-## Installation
+## Installations
 
 - NPM
 
@@ -134,17 +134,17 @@ const result = EsliteComCollectionApi(
 // If you get one or more result(s), it will return an "array".
 result = [
   {
-    title: string or null,
-    author: string[] or null,
-    publisher: string or null,
-    publicationDate: string or null,
-    imageUrl: string or null,
-    introduction: string or null,
+    title: string | null,
+    author: string[] | null,
+    publisher: string | null,
+    publicationDate: string | null,
+    imageUrl: string | null,
+    introduction: string | null,
     price: {
-      discount: number or null,
-      currentPrice: number or null,
+      discount: number | null,
+      currentPrice: number | null,
     },
-    url: string or null,
+    url: string | null,
   },
   { ... }, { ... }, ...
 ];
