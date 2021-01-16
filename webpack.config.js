@@ -9,12 +9,12 @@ const PRODUCTION = "production";
 const commonConfig = {
   mode: process.env.NODE_ENV,
   entry: {
-    "eslite-com-collection-api": "./src/index.ts",
+    "eslite-com-crawler": "./src/index.ts",
   },
   output: {
     path: path.join(__dirname, "dist"),
     filename: process.env.NODE_ENV === PRODUCTION ? "./[name].min.js" : "./[name].js",
-    library: "eslite-com-collection-api",
+    library: "eslite-com-crawler",
     libraryTarget: "umd",
   },
   module: {

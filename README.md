@@ -2,18 +2,18 @@
 >
 > 官方網站已提供它們自己的 API，所以你不需要使用這個套件。
 
-# Unofficial Eslite-com Collection API
+# Eslite-com Crawler
 
-[![NPM version](https://img.shields.io/npm/v/@flowereatfish/eslite-com-api.svg)](https://www.npmjs.com/package/@flowereatfish/eslite-com-api)
-[![Actions status](https://github.com/FlowerEatsFish/eslite-com-api/workflows/build/badge.svg?branch=master)](https://github.com/FlowerEatsFish/eslite-com-api/actions)
-[![Codecov status](https://codecov.io/gh/FlowerEatFish/eslite-com-api/branch/master/graph/badge.svg)](https://codecov.io/gh/FlowerEatFish/eslite-com-api/commits)
-[![Dependencies status](https://github.com/FlowerEatsFish/eslite-com-api/workflows/dependencies-status/badge.svg?branch=master)](https://github.com/FlowerEatsFish/eslite-com-api/actions)
+[![NPM version](https://img.shields.io/npm/v/eslite-com-crawler.svg)](https://www.npmjs.com/package/eslite-com-crawler)
+[![Actions status](https://github.com/FlowerEatsFish/eslite-com-crawler/workflows/build/badge.svg?branch=master)](https://github.com/FlowerEatsFish/eslite-com-crawler/actions)
+[![Codecov status](https://codecov.io/gh/FlowerEatsFish/eslite-com-crawler/branch/master/graph/badge.svg)](https://codecov.io/gh/FlowerEatsFish/eslite-com-crawler/commits)
+[![Dependencies status](https://github.com/FlowerEatsFish/eslite-com-crawler/workflows/dependencies-status/badge.svg?branch=master)](https://github.com/FlowerEatsFish/eslite-com-crawler/actions)
 [![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-非官方誠品網路書店 API
+誠品線上資料爬蟲
 
-- [Unofficial Eslite-com Collection API](#unofficial-eslite-com-collection-api)
+- [Eslite-com Crawler](#eslite-com-crawler)
   - [Requirements](#requirements)
   - [Installations](#installations)
   - [Usage](#usage)
@@ -35,13 +35,13 @@
 - NPM
 
 ```shell
-npm install @flowereatfish/eslite-com-api --save
+npm install eslite-com-crawler --save
 ```
 
 - Yarn
 
 ```shell
-yarn add @flowereatfish/eslite-com-api
+yarn add eslite-com-crawler
 ```
 
 ## Usage
@@ -49,10 +49,10 @@ yarn add @flowereatfish/eslite-com-api
 ### Node.js version 8 or higher (with full Async/Await support)
 
 ```javascript
-const esliteComCollectionApi = require('@flowereatfish/eslite-com-api');
+const esliteComCrawler = require('eslite-com-crawler');
 
 const run = async () => {
-  const results = await esliteComCollectionApi('橡皮擦計畫');
+  const results = await esliteComCrawler('橡皮擦計畫');
   console.log(results);
 };
 
@@ -62,9 +62,9 @@ run();
 ### Others
 
 ```javascript
-const esliteComCollectionApi = require('@flowereatfish/eslite-com-api');
+const esliteComCrawler = require('eslite-com-crawler');
 
-esliteComCollectionApi('橡皮擦計畫')
+esliteComCrawler('橡皮擦計畫')
   .then(results => console.log(results));
 ```
 
@@ -74,8 +74,8 @@ esliteComCollectionApi('橡皮擦計畫')
 
 ```shell
 # To download the files and install packages.
-$ git clone https://github.com/FlowerEatFish/eslite-com-api.git
-$ cd eslite-com-api
+$ git clone https://github.com/FlowerEatsFish/eslite-com-crawler.git
+$ cd eslite-com-crawler
 $ yarn install # npm install
 
 # To run a demo.
@@ -113,9 +113,9 @@ null
 ### Input parameters
 
 ```js
-import EsliteComCollectionApi from 'eslite-com-collection-api'; // Here uses development mode as an example
+import esliteComCrawler from 'eslite-com-crawler'; // Here uses development mode as an example
 
-const result = EsliteComCollectionApi(
+const result = esliteComCrawler(
   keyword, // string. Necessary.
            // If you set it as null, it will get an error.
   page, // number. Positive integer. Default: 1.

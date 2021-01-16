@@ -1,7 +1,7 @@
 {
-  "name": "@flowereatfish/eslite-com-api",
+  "name": "eslite-com-crawler",
   "version": "1.0.5",
-  "description": "Unofficial eslite-com API",
+  "description": "eslite-com crawler",
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
