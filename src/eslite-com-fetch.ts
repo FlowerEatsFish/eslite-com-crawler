@@ -23,7 +23,7 @@ const setKeywordToInsertUrl = (keyword: string): string => {
 
 const setUrl = (keyword: string, page: number): string => {
   const tempKeyword = setKeywordToInsertUrl(keyword);
-  const offset = (page- 1)*20;
+  const offset = (page - 1) * 20;
   return `https://athena.eslite.com/api/v1/search?q=${tempKeyword}&size=20&start=${offset}`;
 };
 

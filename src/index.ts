@@ -11,10 +11,10 @@ const esliteComCollection: EsliteComCollectionFunction = async (
 ): Promise<DetailType[] | null> => {
   const response: FetchResult = await collectionFetch(keyword, page);
   if (!response.data || response.data.hits.hit.length === 0) {
-    return null
-  };
+    return null;
+  }
 
-  const data: DetailType[] = response.data.hits.hit.map(row => {
+  const data: DetailType[] = response.data.hits.hit.map((row) => {
     return {
       title: row.fields.name,
       url: `https://www.eslite.com/product/${row.id}`,
@@ -23,9 +23,7 @@ const esliteComCollection: EsliteComCollectionFunction = async (
       publicationDate: row.fields.manufacturer_date,
       imageUrl: (() => {
         const photoURL = row.fields.product_photo_url;
-        return (photoURL && photoURL.trim()) ?
-          `https://s.eslite.dev${photoURL}` :
-          null;
+        return photoURL && photoURL.trim() ? `https://s.eslite.dev${photoURL}` : null;
       })(),
       price: {
         discount: Number(row.fields.discount_range),
