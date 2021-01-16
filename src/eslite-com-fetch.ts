@@ -3,25 +3,18 @@
  */
 
 import axios from "axios";
+import { EsliteComResponse } from "./eslint-com-fetch";
 
 export interface FetchResult {
-  data: string | null;
+  data: EsliteComResponse | null;
   url: string;
 }
-
-const removeLeftoverCode = (htmlCode: string): string => {
-  let result = htmlCode.replace("\\t", "");
-  result = result.replace("\\n", "");
-  result = result.replace(/\s+/gi, " ");
-
-  return result;
-};
 
 const setKeywordToInsertUrl = (keyword: string): string => {
   // To remove special characters
   let temp = keyword.replace(/[~!@#$%^&*()_+\-=}{[\]|"':;?/.,<>}\\]/gi, " ");
   // To remove two or more consequent white spaces
-  temp = temp.replace(/\s+/, " ");
+  temp = temp.replace(/\s+/, "+");
   // To trim white spaces
   temp = temp.trim();
 
@@ -30,15 +23,15 @@ const setKeywordToInsertUrl = (keyword: string): string => {
 
 const setUrl = (keyword: string, page: number): string => {
   const tempKeyword = setKeywordToInsertUrl(keyword);
-
-  return `http://www.eslite.com/Search_BW.aspx?query=${tempKeyword}&page=${page}`;
+  const offset = (page- 1)*20;
+  return `https://athena.eslite.com/api/v1/search?q=${tempKeyword}&size=20&start=${offset}`;
 };
 
-const fetchFullHtmlCode = async (url: string): Promise<string | null> => {
+const fetchData = async (url: string): Promise<EsliteComResponse | null> => {
   try {
-    const response = await axios.get(url);
+    const response = await axios.get<EsliteComResponse>(url);
 
-    return removeLeftoverCode(response.data);
+    return response.data;
   } catch (error) {
     return null;
   }
@@ -47,5 +40,5 @@ const fetchFullHtmlCode = async (url: string): Promise<string | null> => {
 export const collectionFetch = async (keyword: string, page: number): Promise<FetchResult> => {
   const fullUrl = setUrl(keyword, page);
 
-  return { data: await fetchFullHtmlCode(fullUrl), url: fullUrl };
+  return { data: await fetchData(fullUrl), url: fullUrl };
 };

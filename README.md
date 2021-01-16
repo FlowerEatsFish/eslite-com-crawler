@@ -1,3 +1,7 @@
+> The official website has provided its own API, so you do NOT need to use this package.
+>
+> 官方網站已提供它們自己的 API，所以你不需要使用這個套件。
+
 # Unofficial Eslite-com Collection API
 
 [![NPM version](https://img.shields.io/npm/v/@flowereatfish/eslite-com-api.svg)](https://www.npmjs.com/package/@flowereatfish/eslite-com-api)
@@ -24,7 +28,7 @@
 
 ## Requirements
 
-- This construct uses [Axios.js](https://github.com/axios/axios), so you need to care about Cross-Origin Requests (CORS).
+- This construct uses XHR such as [Axios.js](https://github.com/axios/axios), so you need to care about the Cross-Origin Requests (CORS) and [mixed content](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content) if you use this construct in web browsers rather than Node.js.
 
 ## Installations
 
@@ -81,29 +85,21 @@ $ yarn start # npm start
 ### Results
 
 ```shell
->>> You search data using keyword "春夏秋冬，日日食光。生活美學家的鑄鐵鍋料理手帖".
+>>> You search data using keyword "文學少女".
 
 [
   {
-    title: '春夏秋冬, 日日食光: 生活美學家的鑄鐵鍋料理手帖',
-    url: 'http://www.eslite.com/product.aspx?pgid=1001130572489683&kw=%e6%98%a5%e5%a4%8f%e7%a7%8b%e5%86%ac+%e6%97%a5%e6%97%a5%e9%a3%9f%e5%85%89+%e7%94%9f%e6%b4%bb%e7%be%8e%e5%ad%b8%e5%ae%b6%e7%9a%84%e9%91%84%e9%90%b5%e9%8d%8b%e6%96%99%e7%90%86%e6%89%8b%e5%b8%96&pi=1',
-    author: [ '渡邊有子著' ],
-    publisher: '臉譜出版社',
-    publicationDate: '2016/02/27',
-    imageUrl: 'http://pic.eslite.com/Upload/Product/201602/s/635912082484381250.jpg',
-    price: { discount: 9, currentPrice: 324 },
-    introduction: "'今天在廚房也要用心過生活—— 料理界的松浦彌太郎， 教你品味四季的本質， 追求食材的深層風味， 記憶節氣帶來的美好， ＊ " +
-      'Instragm超過六萬粉絲追蹤的生活美學料理家——渡邊有子 崇尚自然、注重優雅品味的料理生活家渡邊有子， ' +
-      '在日本已分享了許多對於簡單生活的想法和實行秘訣， 尤其在飲食方面，更提出許多同時注重美味、美感和健康的料理，因此廣受大眾歡迎。 ' +
-      '在出版過許多料理食譜書後，她認為， 使'
-  }
+    title: '文學少女十年有成紀念套書 (16冊合售)',
+    url: 'https://www.eslite.com/product/1001125622613420',
+    author: [ '野村美月' ],
+    publisher: [ '尖端出版' ],
+    publicationDate: '2017-08-14T00:00:00Z',
+    imageUrl: 'https://s.eslite.dev/upload/product/m/2681485623007/707488.jpg',
+    price: { discount: 90, currentPrice: 2700 },
+    introduction: '●女主角天野遠子榮獲2009年「這本輕小說最厲害」角色排行第一名。 ●繪者竹岡美穗連續七年登上「這本輕小說最厲害」年度插圖排行前十名。 ●作者野村美月曾獲第三回ENTAME大賞小說部門最優秀獎。 ●日本AMAZON網路書店讀者對此系列每本都有四到五顆星的高評價。 ●紀念套書經作者野村美月認可，書衣全新選圖設計。 ●書衣使用能展現繪者竹岡美穗夢幻手感的珠光墨印刷。 ●特殊書背設計，書籍併排可以拼湊出一張完整的遠子學姊美圖。 ●絕對稀有的四十張紀念藏書票，可以宣示您對書籍的所有權。 ●全新書衣：每一本書的書衣皆經野村美月老師認可重新挑選圖像製作，書背部分更是捨棄傳統書名的列示，透過特別設計，當十六本書併排時，便可以看到一張完整的遠子學姊美圖。 ●質感印刷：書衣印刷也有別於傳統四色印刷，加碼使用能襯托出竹岡美穗老師夢幻手感的珠光墨印製。 ●稀有藏書票：精心挑選四十張圖製作的「文學少女十年有成紀念'
+  },
+  [ {...}, {...}, ... ] # Array.prototype.length <= 20
 ]
-```
-
-```shell
->>> You search data using keyword "disease".
-
-[ {...}, {...}, ... ] # Array.prototype.length <= 10
 ```
 
 ```shell
@@ -123,7 +119,7 @@ const result = EsliteComCollectionApi(
   keyword, // string. Necessary.
            // If you set it as null, it will get an error.
   page, // number. Positive integer. Default: 1.
-        // Every page only shows maximum 10 results.
+        // Every page only shows maximum 20 results.
 )
 ```
 
@@ -133,17 +129,17 @@ const result = EsliteComCollectionApi(
 // If you get one or more result(s), it will return an "array".
 result = [
   {
-    title: string | null,
-    author: string[] | null,
-    publisher: string | null,
-    publicationDate: string | null,
+    title: string,
+    author: string[],
+    publisher: string[],
+    publicationDate: string,
     imageUrl: string | null,
-    introduction: string | null,
+    introduction: string,
     price: {
-      discount: number | null,
-      currentPrice: number | null,
+      discount: number,
+      currentPrice: number,
     },
-    url: string | null,
+    url: string,
   },
   { ... }, { ... }, ...
 ];

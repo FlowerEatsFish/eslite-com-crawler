@@ -4,14 +4,14 @@ export interface PriceField {
 }
 
 export interface DetailType {
-  title: string | null;
-  url: string | null;
-  author: string[] | null;
-  publisher: string | null;
-  publicationDate: string | null;
+  title: string;
+  url: string;
+  author: string[];
+  publisher: string[];
+  publicationDate: string;
   imageUrl: string | null;
   price: PriceField;
-  introduction: string | null;
+  introduction: string;
 }
 
 export type EsliteComCollectionFunction = (

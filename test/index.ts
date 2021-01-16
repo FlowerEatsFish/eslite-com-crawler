@@ -5,23 +5,12 @@ const timeout = 60 * 1000;
 
 describe("Run demo", (): void => {
   it(
-    "Should get one result as Array",
+    "Should get results as Array",
     async (): Promise<void> => {
-      const result = await esliteComCollection("春夏秋冬，日日食光。生活美學家的鑄鐵鍋料理手帖");
+      const result = await esliteComCollection("文學少女");
 
       expect(Array.isArray(result)).toBeTruthy();
-      expect((result as DetailType[]).length).toBe(1);
-    },
-    timeout,
-  );
-
-  it(
-    "Should get results as Array and no more than 10",
-    async (): Promise<void> => {
-      const result = await esliteComCollection("disease");
-
-      expect(Array.isArray(result)).toBeTruthy();
-      expect((result as DetailType[]).length).toBeLessThanOrEqual(10);
+      expect((result as DetailType[]).length).toBeGreaterThan(0);
     },
     timeout,
   );
