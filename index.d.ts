@@ -1,6 +1,6 @@
 export interface PriceField {
-  discount: number | null;
-  currentPrice: number | null;
+  discount: number;
+  currentPrice: number;
 }
 
 export interface DetailType {
