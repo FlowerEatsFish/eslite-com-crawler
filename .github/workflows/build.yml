@@ -42,8 +42,8 @@ jobs:
           custom_payload: |
             {
               attachments: [{
-                color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                text: `*${process.env.AS_REPO}* | ${process.env.AS_REF} | *${process.env.AS_EVENT_NAME}*\n${process.env.AS_COMMIT} | ${process.env.AS_MESSAGE}\n*${{ job.status }}* | ${process.env.AS_WORKFLOW}`,
+                color: '${{ needs.build.result }}' === 'success' ? 'good' : '${{ needs.build.result }}' === 'failure' ? 'danger' : 'warning',
+                text: `*${process.env.AS_REPO}* | ${process.env.AS_REF} | *${process.env.AS_EVENT_NAME}*\n${process.env.AS_COMMIT} | ${process.env.AS_MESSAGE}\n*${{ needs.build.result }}* | ${process.env.AS_WORKFLOW}`,
               }]
             }
         env:
