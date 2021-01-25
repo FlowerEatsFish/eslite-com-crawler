@@ -19,6 +19,6 @@ export type EsliteComCollectionFunction = (
   page?: number,
 ) => Promise<DetailType[] | null>;
 
-declare const esliteComCollectionCrawler: EsliteComCollectionFunction;
+declare const esliteComCrawler: EsliteComCollectionFunction;
 
-export default esliteComCollectionCrawler;
+export default esliteComCrawler;
