@@ -7,6 +7,7 @@
 [![NPM version](https://img.shields.io/npm/v/eslite-com-crawler.svg)](https://www.npmjs.com/package/eslite-com-crawler)
 [![Actions status](https://github.com/FlowerEatsFish/eslite-com-crawler/workflows/build/badge.svg?branch=master)](https://github.com/FlowerEatsFish/eslite-com-crawler/actions)
 [![Codecov status](https://codecov.io/gh/FlowerEatsFish/eslite-com-crawler/branch/master/graph/badge.svg)](https://codecov.io/gh/FlowerEatsFish/eslite-com-crawler/commits)
+[![Scheduled status](https://travis-ci.com/FlowerEatsFish/eslite-com-crawler.svg?branch=master)](https://travis-ci.com/FlowerEatsFish/eslite-com-crawler/builds)
 [![Dependencies status](https://github.com/FlowerEatsFish/eslite-com-crawler/workflows/dependencies-status/badge.svg?branch=master)](https://github.com/FlowerEatsFish/eslite-com-crawler/actions)
 [![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
