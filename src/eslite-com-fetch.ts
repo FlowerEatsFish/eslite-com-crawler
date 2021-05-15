@@ -3,6 +3,7 @@
  */
 
 import axios from "axios";
+import UserAgent from "user-agents";
 import { EsliteComResponse } from "./eslint-com-fetch";
 
 export interface FetchResult {
@@ -29,7 +30,9 @@ const setUrl = (keyword: string, page: number): string => {
 
 const fetchData = async (url: string): Promise<EsliteComResponse | null> => {
   try {
-    const response = await axios.get<EsliteComResponse>(url);
+    const response = await axios.get<EsliteComResponse>(url, {
+      headers: { "User-Agent": new UserAgent().toString() },
+    });
 
     return response.data;
   } catch (error) {
