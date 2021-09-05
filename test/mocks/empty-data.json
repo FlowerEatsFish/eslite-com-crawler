@@ -1,0 +1,9 @@
+{
+  "status": { "rid": "test", "time-ms": 2 },
+  "hits": { "found": 0, "start": 1, "hit": [] },
+  "facets": {
+    "author": { "buckets": [] },
+    "categories": { "buckets": [] },
+    "manufacturer": { "buckets": [] }
+  }
+}

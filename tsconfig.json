@@ -54,6 +54,7 @@
     // "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     // "preserveSymlinks": true,
+    "resolveJsonModule": true,
 
     /* Source Map Options */
     // "sourceRoot": "",
