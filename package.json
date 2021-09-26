@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "axios": "^0.21.4",
-    "user-agents": "^1.0.653"
+    "user-agents": "^1.0.786"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
